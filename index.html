@@ -518,7 +518,7 @@ setTimeout(()=>note.classList.add("in"),2200);
 function close(){note.classList.remove("in");note.classList.add("out");setTimeout(()=>note.style.display="none",600)}
 $("#nn").onclick=close;$("#nc").onclick=()=>{close();$("#contact").scrollIntoView({behavior:"smooth"})};
 
-// ---------- legal ----------
+// ---------- English legal ----------
 const CO="<b>Tadeax Studio</b>, <b>TadxInterface</b> and <b>LunaStudio</b>";
 const LEGAL_EN={
 terms:["Terms of Use",`<p><i>Last updated: October 9, 2026</i></p>
@@ -574,7 +574,7 @@ privacy:["Zásady ochrany osobních údajů",`<p><i>Naposledy aktualizováno: 9.
 <h4>8. Děti</h4><p>Web není určen dětem do 15 let bez souhlasu rodičů.</p>
 <h4>9. Kontakt</h4><p><a href="mailto:tad.studio.cz@gmail.com" style="color:var(--o)">tad.studio.cz@gmail.com</a></p>`]};
 
-// ---------- TadxAI ----------
+// ---------- TadxAI -----------
 const go=(h,t)=>`<a href="${h}" data-go>${t}</a>`;
 const LK='<a href="https://linktr.ee/tadeax_studio.cz" target="_blank" rel="noopener">Linktree</a>';
 const KB={
@@ -676,7 +676,7 @@ function greet(){greeted=true;msg(ans("greet"),"b",true);msg(CH.hint[lang],"b")}
 function toggleAI(){aip.classList.toggle("show");if(aip.classList.contains("show")&&!greeted)greet()}
 $("#aib").onclick=toggleAI;$("#aix").onclick=toggleAI;
 
-// ---------- i18n engine ----------
+// ---------- i18n engine -----------
 function tr(k){if(lang==="en")return k;const v=T[k];return v&&v[IDX[lang]]!==undefined?v[IDX[lang]]:k}
 function walk(root){
   const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentElement;return p&&!p.closest("script,style,pre,#lgm,#aim,[data-h]")?1:2}});
