@@ -24,16 +24,16 @@ h2.t span,.or{color:var(--o)}
 @keyframes lev{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(var(--x),calc(var(--y)*-1)) rotate(12deg)}100%{transform:translate(calc(var(--x)*-1),var(--y)) rotate(-10deg)}}
 body:before{content:"";position:fixed;inset:0;z-index:0;background:radial-gradient(circle at 20% 10%,#ff6a0022,transparent 40%),radial-gradient(circle at 85% 70%,#ff6a0015,transparent 45%);pointer-events:none}
 /* nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:calc(14px + env(safe-area-inset-top,0px)) 6vw 14px;display:flex;justify-content:space-between;align-items:center;background:#070707cc;backdrop-filter:blur(14px);border-bottom:1px solid var(--bd)}
-.logo{font-weight:700;font-size:1.2rem;display:flex;gap:8px;align-items:center}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:calc(14px + env(safe-area-inset-top,0px)) 4vw 14px;display:flex;align-items:center;gap:20px}nav:before{content:"";position:absolute;inset:0;z-index:-1;background:#070707e6;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--bd)}
+.logo{font-weight:700;font-size:1.2rem;display:flex;gap:8px;align-items:center;white-space:nowrap;flex:none}
 .logo i{width:30px;height:30px;border-radius:8px;background:var(--o);color:#000;display:grid;place-items:center;font-style:normal;font-weight:700}
-.links{display:flex;gap:26px;font-size:.92rem}
+.links{display:flex;gap:22px;font-size:.92rem;margin:0 auto;white-space:nowrap}
 .links a{color:var(--mut);transition:.2s}.links a:hover,.links a.act{color:var(--o)}
 .btn{display:inline-flex;gap:8px;align-items:center;padding:13px 24px;border-radius:12px;font-weight:700;border:1px solid var(--o);cursor:pointer;font-family:inherit;font-size:.95rem;transition:.25s}
 .btn.p{background:var(--o);color:#000}.btn.p:hover{background:var(--o2);transform:translateY(-3px);box-shadow:0 10px 30px #ff6a0055}
 .btn.g{background:transparent;color:var(--tx)}.btn.g:hover{background:#ff6a0018;transform:translateY(-3px)}
 .burger{display:none;background:none;border:0;color:var(--tx);cursor:pointer}
-@media(max-width:860px){.links{position:fixed;top:0;right:-100%;height:100%;width:70%;background:#0c0c0c;flex-direction:column;padding:100px 30px;transition:.35s;border-left:1px solid var(--bd)}.links.open{right:0}.burger{display:block;z-index:60}.hide-m{display:none}}
+nav>.btn{white-space:nowrap;flex:none}.burger{padding:4px;line-height:0}@media(max-width:1280px){.links{position:fixed;top:0;right:-100%;height:100vh;height:100dvh;width:min(300px,78%);margin:0;background:#0c0c0c;flex-direction:column;gap:18px;padding:100px 30px;font-size:1.1rem;transition:right .35s;border-left:1px solid var(--bd);z-index:55}.links.open{right:0}.burger{display:block;z-index:60}.hide-m{display:none}.lw{margin-left:auto}}
 /* home */
 #home{min-height:100vh;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:20px;padding-top:120px}
 @media(max-width:900px){#home{grid-template-columns:1fr}#cv{height:340px!important;order:-1}}
@@ -150,6 +150,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--bd);background:#05
 #aif{display:flex;gap:8px;padding:12px;border-top:1px solid var(--bd)}
 #aif input{flex:1}#aif button{padding:0 16px}
 @media(max-width:560px){#note{bottom:calc(86px + env(safe-area-inset-bottom,0px))}}
+.lw{display:flex;align-items:center;gap:6px;color:var(--o);flex:none}.lw select{width:auto;padding:8px 10px;border-radius:10px;font-size:.85rem;cursor:pointer}
 </style>
 </head>
 <body>
@@ -160,6 +161,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--bd);background:#05
   <div class="links" id="links">
     <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#process">Process</a><a href="#partners">Partners</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
   </div>
+  <div class="lw"><i data-lucide="globe" width="16"></i><select id="lsel" aria-label="Language"><option value="cs">Čeština</option><option value="en">English</option><option value="es">Español</option><option value="de">Deutsch</option><option value="pl">Polski</option><option value="sk">Slovenčina</option></select></div>
   <a href="#contact" class="btn p hide-m"><i data-lucide="send" width="16"></i> Start a project</a>
   <button class="burger" id="bg" aria-label="Menu"><i data-lucide="menu"></i></button>
 </nav>
@@ -184,7 +186,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--bd);background:#05
   <div class="tag mono"><i data-lucide="user" width="16"></i> About us</div>
   <div class="about">
     <div class="rv">
-      <h2 class="t">Ahoj! We are <span>Tadeax Studio</span></h2>
+      <h2 class="tNone" data-h="h_about">Ahoj! We are <span>Tadeax Studio</span></h2>
       <p style="color:var(--mut)">Tadeax Studio is an independent creative studio from Czechia. It started as a YouTube channel and grew into a place where we build websites, visual identities and playful digital worlds.</p>
       <p style="color:var(--mut)">Behind the studio is a YouTuber and programmer with a big passion for trains and public transport. That love shows up in our projects, and we also make music. Today we offer web services, Roblox scripts, thumbnails, logos and music projects.</p>
       <p style="color:var(--mut)">Everything is made with enthusiasm and a drive to push quality further, even from a simple setup. Our channel has passed 800 subscribers and keeps growing.</p>
@@ -208,21 +210,21 @@ footer{position:relative;z-index:2;border-top:1px solid var(--bd);background:#05
 
 <section id="services"><div class="wrap">
   <div class="tag mono"><i data-lucide="wrench" width="16"></i> Services</div>
-  <h2 class="t rv">What we <span>create</span></h2>
+  <h2 class="t rv" data-h="h_serv">What we <span>create</span></h2>
   <p class="sub rv">From pixels to scripts — everything under one orange roof.</p>
   <div class="grid" id="sv"></div>
 </div></section>
 
 <section id="portfolio"><div class="wrap">
   <div class="tag mono"><i data-lucide="folder-open" width="16"></i> Portfolio</div>
-  <h2 class="t rv">Selected <span>projects</span></h2>
+  <h2 class="t rv" data-h="h_port">Selected <span>projects</span></h2>
   <p class="sub rv">Live websites we've shipped. Click any card to open it.</p>
   <div class="grid" id="pf"></div>
 </div></section>
 
 <section id="process"><div class="wrap">
   <div class="tag mono"><i data-lucide="route" width="16"></i> Process</div>
-  <h2 class="t rv">How we <span>work</span></h2>
+  <h2 class="t rv" data-h="h_proc">How we <span>work</span></h2>
   <p class="sub rv">Simple, transparent, fast.</p>
   <div class="steps rv">
     <div class="step"><h4>Brief</h4><p>You tell us what you want to create and where it should live.</p></div>
@@ -234,7 +236,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--bd);background:#05
 
 <section id="partners"><div class="wrap">
   <div class="tag mono"><i data-lucide="handshake" width="16"></i> Partners</div>
-  <h2 class="t rv">Our <span>partners</span></h2>
+  <h2 class="t rv" data-h="h_part">Our <span>partners</span></h2>
   <p class="sub rv">The brands, projects and studios in the Tadeax family.</p>
   <div class="grid" id="pt"></div>
   <p class="rv" style="color:var(--mut);margin-top:30px">Want to partner with us? Pick “Partnership” in the contact form below.</p>
@@ -242,7 +244,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--bd);background:#05
 
 <section id="faq"><div class="wrap" style="max-width:800px">
   <div class="tag mono"><i data-lucide="help-circle" width="16"></i> FAQ</div>
-  <h2 class="t rv">Good <span>questions</span></h2><br>
+  <h2 class="t rv" data-h="h_faq">Good <span>questions</span></h2><br>
   <details class="rv"><summary>What can I order from Tadeax Studio?</summary><p>Websites, Roblox scripts, YouTube thumbnails, logos and partnerships. If you have something different in mind, just ask.</p></details>
   <details class="rv"><summary>Which platforms do you build websites on?</summary><p>Lovable, Vercel, Bolt.new, Rocket.new — or something different if you prefer. You choose in the contact form.</p></details>
   <details class="rv"><summary>Which languages do you speak?</summary><p>We communicate in Czech and English.</p></details>
@@ -251,7 +253,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--bd);background:#05
 
 <section id="contact"><div class="wrap">
   <div class="tag mono"><i data-lucide="mail" width="16"></i> Contact</div>
-  <h2 class="t rv">Let's <span>talk</span></h2>
+  <h2 class="t rv" data-h="h_cont">Let's <span>talk</span></h2>
   <p class="sub rv">Tell us what you want to create and we'll get back to you.</p>
   <div class="cg">
     <div class="rv">
@@ -275,9 +277,9 @@ footer{position:relative;z-index:2;border-top:1px solid var(--bd);background:#05
       <label id="dist">Where should we build your website?
         <select name="dist"><option>Lovable</option><option>Vercel</option><option>Bolt.new</option><option>Rocket.new</option><option>Different</option></select>
       </label>
-      <div id="wn"><i data-lucide="info" width="20"></i><span><b>For your understanding:</b> websites are made by third-party distributors (Lovable, Vercel, Bolt.new, Rocket.new or another platform) and an AI is used to create these websites.</span></div>
+      <div id="wn"><i data-lucide="info" width="20"></i><span data-h="note"><b>For your understanding:</b> websites are made by third-party distributors (Lovable, Vercel, Bolt.new, Rocket.new or another platform) and an AI is used to create these websites.</span></div>
       <label>Message<textarea name="msg" rows="5" required placeholder="Describe your idea…"></textarea></label>
-      <label class="ck"><input type="checkbox" required><span>I agree to the <button type="button" class="fl" data-lg="terms">Terms of Use</button> and <button type="button" class="fl" data-lg="privacy">Privacy Policy</button>.</span></label>
+      <label class="ck"><input type="checkbox" required><span data-h="consent">I agree to the <button type="button" class="fl" data-lg="terms">Terms of Use</button> and <button type="button" class="fl" data-lg="privacy">Privacy Policy</button>.</span></label>
       <button class="btn p" type="submit" style="justify-content:center"><i data-lucide="send" width="18"></i> Send message</button>
       <div id="ok"><b class="or">Your email is ready!</b>
         <p style="margin:6px 0;color:var(--mut);font-size:.85rem">Your email app should open automatically. If it didn't, use the button below.</p>
@@ -295,12 +297,12 @@ footer{position:relative;z-index:2;border-top:1px solid var(--bd);background:#05
     <div><b>Legal</b><a href="#" data-lg="terms">Terms of Use</a><a href="#" data-lg="privacy">Privacy Policy</a></div>
     <div><b>Social</b><a href="mailto:tad.studio.cz@gmail.com">Email</a><a href="https://linktr.ee/tadeax_studio.cz" target="_blank" rel="noopener">Linktree</a><a style="opacity:.4">More coming soon</a></div>
   </div>
-  <div class="cp">© 2026 Tadeax Studio, TadxInterface &amp; LunaStudio. All rights reserved. All designs, code, scripts, logos, text and visuals on this website are the intellectual property of Tadeax Studio and may not be copied, reproduced or redistributed without written permission. Third-party names and logos belong to their respective owners.</div>
+  <div class="cp" data-h="cp">© 2026 Tadeax Studio, TadxInterface &amp; LunaStudio. All rights reserved. All designs, code, scripts, logos, text and visuals on this website are the intellectual property of Tadeax Studio and may not be copied, reproduced or redistributed without written permission. Third-party names and logos belong to their respective owners.</div>
 </footer>
 
 <div id="note"><div class="box">
   <h5><i data-lucide="bell-ring" width="18"></i> New update!</h5>
-  <p>Tadeax Studio now does <b>Logos, Roblox Scripts &amp; Thumbnails</b>.</p>
+  <p data-h="nbody">Tadeax Studio now does <b>Logos, Roblox Scripts &amp; Thumbnails</b>.</p>
   <div class="row"><button class="btn p" id="nc"><i data-lucide="mail" width="15"></i> Contact Tadeax</button><button class="btn g" id="nn">Nevermind</button></div>
 </div></div>
 
@@ -318,13 +320,148 @@ footer{position:relative;z-index:2;border-top:1px solid var(--bd);background:#05
 <script src="https://cdn.jsdelivr.net/npm/lucide@0.383.0/dist/umd/lucide.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
+let lang=(function(){try{var l=localStorage.getItem("tl");if(["cs","en","es","de","pl","sk"].indexOf(l)>-1)return l}catch(e){}return"cs"})();
+const IDX={cs:0,es:1,de:2,pl:3,sk:4},HI={en:0,cs:1,es:2,de:3,pl:4,sk:5};
+const PHRASES={
+en:["Let's build something","Let's design your website","Let's script your game","Let's craft your logo","Let's make a thumbnail"],
+cs:["Pojďme něco vytvořit","Pojďme navrhnout tvůj web","Pojďme naskriptovat tvou hru","Pojďme vytvořit tvoje logo","Pojďme udělat miniaturu"],
+es:["Construyamos algo","Diseñemos tu web","Programemos tu juego","Creemos tu logo","Hagamos una miniatura"],
+de:["Lass uns etwas bauen","Lass uns deine Website gestalten","Lass uns dein Spiel skripten","Lass uns dein Logo erstellen","Lass uns ein Thumbnail machen"],
+pl:["Zbudujmy coś razem","Zaprojektujmy twoją stronę","Napiszmy skrypty do twojej gry","Stwórzmy twoje logo","Zróbmy miniaturę"],
+sk:["Poďme niečo vytvoriť","Poďme navrhnúť tvoj web","Poďme naskriptovať tvoju hru","Poďme vytvoriť tvoje logo","Poďme urobiť miniatúru"]};
+
+// English text -> [cs, es, de, pl, sk]
+const T={
+"Home":["Domů","Inicio","Start","Start","Domov"],
+"About":["O nás","Nosotros","Über uns","O nas","O nás"],
+"Services":["Služby","Servicios","Leistungen","Usługi","Služby"],
+"Portfolio":["Portfolio","Portafolio","Portfolio","Portfolio","Portfólio"],
+"Process":["Postup","Proceso","Ablauf","Proces","Postup"],
+"Partners":["Partneři","Socios","Partner","Partnerzy","Partneri"],
+"Contact":["Kontakt","Contacto","Kontakt","Kontakt","Kontakt"],
+"Start a project":["Zahájit projekt","Iniciar proyecto","Projekt starten","Rozpocznij projekt","Začať projekt"],
+"Web design & game scripting studio":["Studio webdesignu a skriptování her","Estudio de diseño web y scripts de juegos","Studio für Webdesign & Spiele-Scripting","Studio projektowania stron i skryptów do gier","Štúdio webdizajnu a skriptovania hier"],
+"Tadeax Studio crafts bold websites, Roblox scripts, YouTube thumbnails and logos — all in black & orange energy, built to get noticed.":["Tadeax Studio tvoří odvážné weby, Roblox skripty, YouTube miniatury a loga — to vše v černo-oranžové energii a vytvořené tak, aby zaujalo.","Tadeax Studio crea sitios web atrevidos, scripts de Roblox, miniaturas de YouTube y logos, todo con energía negra y naranja, hecho para destacar.","Tadeax Studio gestaltet mutige Websites, Roblox-Skripte, YouTube-Thumbnails und Logos – alles in schwarz-oranger Energie und gemacht, um aufzufallen.","Tadeax Studio tworzy odważne strony internetowe, skrypty Roblox, miniatury YouTube i logo — wszystko w czarno-pomarańczowej energii, stworzone, by zwracać uwagę.","Tadeax Studio tvorí odvážne weby, Roblox skripty, YouTube miniatúry a loga — všetko v čierno-oranžovej energii a vytvorené tak, aby zaujalo."],
+"See our work":["Prohlédnout práci","Ver nuestro trabajo","Unsere Arbeiten ansehen","Zobacz nasze prace","Pozrieť našu prácu"],
+"Contact us":["Kontaktujte nás","Contáctanos","Kontakt aufnehmen","Skontaktuj się","Kontaktujte nás"],
+"Websites":["Weby","Sitios web","Websites","Strony internetowe","Weby"],
+"Roblox Scripts":["Roblox skripty","Scripts de Roblox","Roblox-Skripte","Skrypty Roblox","Roblox skripty"],
+"Thumbnails":["Miniatury","Miniaturas","Thumbnails","Miniatury","Miniatúry"],
+"Logos":["Loga","Logos","Logos","Logo","Loga"],
+"Partnerships":["Partnerství","Alianzas","Partnerschaften","Partnerstwa","Partnerstvá"],
+"About us":["O nás","Sobre nosotros","Über uns","O nas","O nás"],
+"Tadeax Studio is an independent creative studio from Czechia. It started as a YouTube channel and grew into a place where we build websites, visual identities and playful digital worlds.":["Tadeax Studio je nezávislé kreativní studio z Česka. Začalo jako YouTube kanál a vyrostlo v místo, kde tvoříme weby, vizuální identity a hravé digitální světy.","Tadeax Studio es un estudio creativo independiente de Chequia. Empezó como canal de YouTube y creció hasta ser un lugar donde creamos sitios web, identidades visuales y mundos digitales divertidos.","Tadeax Studio ist ein unabhängiges Kreativstudio aus Tschechien. Es begann als YouTube-Kanal und wurde zu einem Ort, an dem wir Websites, visuelle Identitäten und verspielte digitale Welten bauen.","Tadeax Studio to niezależne studio kreatywne z Czech. Zaczęło jako kanał na YouTube, a wyrosło na miejsce, w którym tworzymy strony, identyfikacje wizualne i zabawne światy cyfrowe.","Tadeax Studio je nezávislé kreatívne štúdio z Česka. Začalo ako YouTube kanál a vyrástlo na miesto, kde tvoríme weby, vizuálne identity a hravé digitálne svety."],
+"Behind the studio is a YouTuber and programmer with a big passion for trains and public transport. That love shows up in our projects, and we also make music. Today we offer web services, Roblox scripts, thumbnails, logos and music projects.":["Za studiem stojí youtuber a programátor s velkou vášní pro vlaky a veřejnou dopravu. Tato láska se promítá do našich projektů a také tvoříme hudbu. Dnes nabízíme webové služby, Roblox skripty, miniatury, loga a hudební projekty.","Detrás del estudio hay un youtuber y programador con gran pasión por los trenes y el transporte público. Ese amor se nota en nuestros proyectos, y además hacemos música. Hoy ofrecemos servicios web, scripts de Roblox, miniaturas, logos y proyectos musicales.","Hinter dem Studio steht ein YouTuber und Programmierer mit großer Leidenschaft für Züge und den öffentlichen Nahverkehr. Diese Liebe zeigt sich in unseren Projekten, und wir machen auch Musik. Heute bieten wir Webservices, Roblox-Skripte, Thumbnails, Logos und Musikprojekte an.","Za studiem stoi youtuber i programista z wielką pasją do pociągów i transportu publicznego. Ta miłość widać w naszych projektach, a do tego tworzymy muzykę. Dziś oferujemy usługi webowe, skrypty Roblox, miniatury, logo i projekty muzyczne.","Za štúdiom stojí youtuber a programátor s veľkou vášňou pre vlaky a verejnú dopravu. Táto láska sa prejavuje v našich projektoch a tvoríme aj hudbu. Dnes ponúkame webové služby, Roblox skripty, miniatúry, loga a hudobné projekty."],
+"Everything is made with enthusiasm and a drive to push quality further, even from a simple setup. Our channel has passed 800 subscribers and keeps growing.":["Všechno děláme s nadšením a snahou posouvat kvalitu dál, i z jednoduchého vybavení. Náš kanál překonal 800 odběratelů a stále roste.","Todo se hace con entusiasmo y con ganas de mejorar la calidad, incluso desde un equipo sencillo. Nuestro canal ha superado los 800 suscriptores y sigue creciendo.","Alles entsteht mit Begeisterung und dem Antrieb, die Qualität weiter zu steigern, selbst mit einfacher Ausstattung. Unser Kanal hat über 800 Abonnenten und wächst weiter.","Wszystko powstaje z entuzjazmem i dążeniem do jeszcze lepszej jakości, nawet przy prostym sprzęcie. Nasz kanał przekroczył 800 subskrybentów i wciąż rośnie.","Všetko robíme s nadšením a snahou posúvať kvalitu ďalej, aj z jednoduchého vybavenia. Náš kanál prekonal 800 odberateľov a stále rastie."],
+"YouTube subscribers":["Odběratelé na YouTube","Suscriptores en YouTube","YouTube-Abonnenten","Subskrybenci na YouTube","Odberatelia na YouTube"],
+"Live websites":["Živé weby","Sitios web activos","Live-Websites","Działające strony","Živé weby"],
+"Passions: web, trains, music":["Vášně: web, vlaky, hudba","Pasiones: web, trenes, música","Leidenschaften: Web, Züge, Musik","Pasje: web, pociągi, muzyka","Vášne: web, vlaky, hudba"],
+"From pixels to scripts — everything under one orange roof.":["Od pixelů po skripty — vše pod jednou oranžovou střechou.","De píxeles a scripts: todo bajo un mismo techo naranja.","Von Pixeln bis Skripten – alles unter einem orangen Dach.","Od pikseli po skrypty — wszystko pod jednym pomarańczowym dachem.","Od pixelov po skripty — všetko pod jednou oranžovou strechou."],
+"YouTube Thumbnails":["YouTube miniatury","Miniaturas de YouTube","YouTube-Thumbnails","Miniatury YouTube","YouTube miniatúry"],
+"Custom Work":["Práce na míru","Trabajo a medida","Individuelle Projekte","Projekty na zamówienie","Práca na mieru"],
+"Modern, responsive sites built on Lovable, Vercel, Bolt.new or Rocket.new.":["Moderní, responzivní weby vytvořené na Lovable, Vercel, Bolt.new nebo Rocket.new.","Sitios modernos y adaptables creados en Lovable, Vercel, Bolt.new o Rocket.new.","Moderne, responsive Websites, erstellt auf Lovable, Vercel, Bolt.new oder Rocket.new.","Nowoczesne, responsywne strony tworzone na Lovable, Vercel, Bolt.new lub Rocket.new.","Moderné, responzívne weby vytvorené na Lovable, Vercel, Bolt.new alebo Rocket.new."],
+"Game systems, UI, tools and server-safe logic in Luau.":["Herní systémy, UI, nástroje a bezpečná serverová logika v Luau.","Sistemas de juego, interfaces, herramientas y lógica segura de servidor en Luau.","Spielsysteme, UI, Tools und serversichere Logik in Luau.","Systemy gier, interfejsy, narzędzia i bezpieczna logika serwerowa w Luau.","Herné systémy, UI, nástroje a bezpečná serverová logika v Luau."],
+"Click-worthy thumbnails with strong contrast and clear story.":["Miniatury, na které se chce kliknout, se silným kontrastem a jasným příběhem.","Miniaturas que invitan al clic, con fuerte contraste y una historia clara.","Klickstarke Thumbnails mit starkem Kontrast und klarer Aussage.","Miniatury zachęcające do kliknięcia, z mocnym kontrastem i jasnym przekazem.","Miniatúry, na ktoré sa chce kliknúť, so silným kontrastom a jasným príbehom."],
+"Clean, memorable brand marks in your colors.":["Čistá, zapamatovatelná loga ve tvých barvách.","Logotipos limpios y memorables en tus colores.","Klare, einprägsame Logos in deinen Farben.","Czyste, zapadające w pamięć logo w twoich kolorach.","Čisté, zapamätateľné loga v tvojich farbách."],
+"Collaborations, sponsorships and long-term projects.":["Spolupráce, sponzoring a dlouhodobé projekty.","Colaboraciones, patrocinios y proyectos a largo plazo.","Kooperationen, Sponsoring und langfristige Projekte.","Współprace, sponsoring i projekty długoterminowe.","Spolupráce, sponzoring a dlhodobé projekty."],
+"Something different? We'll find a way to build it.":["Něco jiného? Najdeme způsob, jak to vytvořit.","¿Algo diferente? Encontraremos la forma de crearlo.","Etwas anderes? Wir finden einen Weg, es umzusetzen.","Coś innego? Znajdziemy sposób, żeby to zrobić.","Niečo iné? Nájdeme spôsob, ako to vytvoriť."],
+"Live websites we've shipped. Click any card to open it.":["Živé weby, které jsme vydali. Klikni na kartu a otevře se.","Sitios web activos que hemos publicado. Haz clic en una tarjeta para abrirla.","Live-Websites, die wir veröffentlicht haben. Klicke auf eine Karte, um sie zu öffnen.","Działające strony, które opublikowaliśmy. Kliknij kartę, aby ją otworzyć.","Živé weby, ktoré sme vydali. Klikni na kartu a otvorí sa."],
+"Community-style website project.":["Webový projekt v komunitním stylu.","Proyecto web de estilo comunitario.","Website-Projekt im Community-Stil.","Projekt strony w stylu społecznościowym.","Webový projekt v komunitnom štýle."],
+"A wallpaper collection site.":["Web se sbírkou tapet.","Un sitio con una colección de fondos de pantalla.","Eine Website mit Hintergrundbildern.","Strona z kolekcją tapet.","Web so zbierkou tapiet."],
+"Mining-themed web experience.":["Webový zážitek s tématem těžby.","Experiencia web con temática de minería.","Web-Erlebnis mit Bergbau-Thema.","Strona o tematyce górniczej.","Webový zážitok s témou ťažby."],
+"Seasonal Easter-themed website.":["Sezónní web s velikonočním tématem.","Sitio web de temporada con temática de Pascua.","Saisonale Website mit Oster-Thema.","Sezonowa strona o tematyce wielkanocnej.","Sezónny web s veľkonočnou témou."],
+"Public transport inspired project.":["Projekt inspirovaný veřejnou dopravou.","Proyecto inspirado en el transporte público.","Projekt, inspiriert vom öffentlichen Nahverkehr.","Projekt inspirowany transportem publicznym.","Projekt inspirovaný verejnou dopravou."],
+"Visit site":["Otevřít web","Visitar sitio","Seite besuchen","Odwiedź stronę","Otvoriť web"],
+"Simple, transparent, fast.":["Jednoduše, transparentně, rychle.","Simple, transparente, rápido.","Einfach, transparent, schnell.","Prosto, przejrzyście, szybko.","Jednoducho, transparentne, rýchlo."],
+"Brief":["Zadání","Briefing","Briefing","Brief","Zadanie"],
+"Design":["Návrh","Diseño","Design","Projekt","Návrh"],
+"Build":["Tvorba","Desarrollo","Umsetzung","Realizacja","Tvorba"],
+"Launch":["Spuštění","Lanzamiento","Launch","Wdrożenie","Spustenie"],
+"You tell us what you want to create and where it should live.":["Řekneš nám, co chceš vytvořit a kde to má běžet.","Nos cuentas qué quieres crear y dónde debe vivir.","Du sagst uns, was du erstellen willst und wo es laufen soll.","Mówisz nam, co chcesz stworzyć i gdzie ma działać.","Povieš nám, čo chceš vytvoriť a kde to má bežať."],
+"We shape the look — layout, colors, typography and motion.":["Vytvoříme vzhled — rozvržení, barvy, typografii a animace.","Damos forma al aspecto: diseño, colores, tipografía y movimiento.","Wir gestalten den Look – Layout, Farben, Typografie und Bewegung.","Kształtujemy wygląd — układ, kolory, typografię i animacje.","Vytvoríme vzhľad — rozloženie, farby, typografiu a animácie."],
+"We code, script or illustrate everything with attention to detail.":["Vše programujeme, skriptujeme nebo kreslíme s důrazem na detail.","Programamos, escribimos scripts o ilustramos todo con atención al detalle.","Wir programmieren, skripten oder illustrieren alles mit Liebe zum Detail.","Wszystko kodujemy, skryptujemy lub ilustrujemy z dbałością o szczegóły.","Všetko programujeme, skriptujeme alebo kreslíme s dôrazom na detail."],
+"We test, polish and publish. Then we stay around for tweaks.":["Otestujeme, vyladíme a zveřejníme. Pak jsme tu pro další úpravy.","Probamos, pulimos y publicamos. Después seguimos disponibles para ajustes.","Wir testen, polieren und veröffentlichen. Danach bleiben wir für Anpassungen da.","Testujemy, dopracowujemy i publikujemy. Potem zostajemy do poprawek.","Otestujeme, vyladíme a zverejníme. Potom sme tu pre ďalšie úpravy."],
+"The brands, projects and studios in the Tadeax family.":["Značky, projekty a studia z rodiny Tadeax.","Las marcas, proyectos y estudios de la familia Tadeax.","Die Marken, Projekte und Studios der Tadeax-Familie.","Marki, projekty i studia z rodziny Tadeax.","Značky, projekty a štúdiá z rodiny Tadeax."],
+"PARTNER":["PARTNER","SOCIO","PARTNER","PARTNER","PARTNER"],
+"Want to partner with us? Pick “Partnership” in the contact form below.":["Chceš s námi spolupracovat? Vyber „Partnerství“ v kontaktním formuláři níže.","¿Quieres ser nuestro socio? Elige «Alianza» en el formulario de contacto de abajo.","Du möchtest mit uns kooperieren? Wähle im Kontaktformular unten „Partnerschaft“.","Chcesz z nami współpracować? Wybierz „Partnerstwo” w formularzu kontaktowym poniżej.","Chceš s nami spolupracovať? Vyber „Partnerstvo“ v kontaktnom formulári nižšie."],
+"What can I order from Tadeax Studio?":["Co si mohu u Tadeax Studia objednat?","¿Qué puedo pedir a Tadeax Studio?","Was kann ich bei Tadeax Studio bestellen?","Co mogę zamówić w Tadeax Studio?","Čo si môžem objednať v Tadeax Studiu?"],
+"Websites, Roblox scripts, YouTube thumbnails, logos and partnerships. If you have something different in mind, just ask.":["Weby, Roblox skripty, YouTube miniatury, loga a partnerství. Pokud máš na mysli něco jiného, stačí se zeptat.","Sitios web, scripts de Roblox, miniaturas de YouTube, logos y alianzas. Si tienes algo diferente en mente, solo pregunta.","Websites, Roblox-Skripte, YouTube-Thumbnails, Logos und Partnerschaften. Wenn du etwas anderes im Sinn hast, frag einfach.","Strony internetowe, skrypty Roblox, miniatury YouTube, logo i partnerstwa. Jeśli masz na myśli coś innego, po prostu zapytaj.","Weby, Roblox skripty, YouTube miniatúry, loga a partnerstvá. Ak máš na mysli niečo iné, stačí sa opýtať."],
+"Which platforms do you build websites on?":["Na jakých platformách weby vytváříte?","¿En qué plataformas creáis los sitios web?","Auf welchen Plattformen erstellt ihr Websites?","Na jakich platformach tworzycie strony?","Na akých platformách weby vytvárate?"],
+"Lovable, Vercel, Bolt.new, Rocket.new — or something different if you prefer. You choose in the contact form.":["Lovable, Vercel, Bolt.new, Rocket.new — nebo jinou platformu, pokud chceš. Vybereš v kontaktním formuláři.","Lovable, Vercel, Bolt.new, Rocket.new, o algo diferente si lo prefieres. Lo eliges en el formulario de contacto.","Lovable, Vercel, Bolt.new, Rocket.new – oder etwas anderes, wenn du möchtest. Du wählst es im Kontaktformular.","Lovable, Vercel, Bolt.new, Rocket.new — albo inna platforma, jeśli wolisz. Wybierasz w formularzu kontaktowym.","Lovable, Vercel, Bolt.new, Rocket.new — alebo inú platformu, ak chceš. Vyberieš v kontaktnom formulári."],
+"Which languages do you speak?":["Jakými jazyky mluvíte?","¿Qué idiomas habláis?","Welche Sprachen sprecht ihr?","Jakimi językami mówicie?","Akými jazykmi hovoríte?"],
+"We communicate in Czech and English.":["Komunikujeme česky a anglicky. Web je dostupný v češtině, angličtině, španělštině, němčině, polštině a slovenštině.","Nos comunicamos en checo e inglés. El sitio está disponible en checo, inglés, español, alemán, polaco y eslovaco.","Wir kommunizieren auf Tschechisch und Englisch. Die Website gibt es auf Tschechisch, Englisch, Spanisch, Deutsch, Polnisch und Slowakisch.","Komunikujemy się po czesku i angielsku. Strona jest dostępna po czesku, angielsku, hiszpańsku, niemiecku, polsku i słowacku.","Komunikujeme po česky a anglicky. Web je dostupný v češtine, angličtine, španielčine, nemčine, poľštine a slovenčine."],
+"How do I reach you fastest?":["Jak vás nejrychleji zastihnu?","¿Cuál es la forma más rápida de contactaros?","Wie erreiche ich euch am schnellsten?","Jak najszybciej się z wami skontaktować?","Ako vás najrýchlejšie zastihnem?"],
+"Use the contact form below or message us via our Linktree.":["Použij kontaktní formulář níže nebo nám napiš přes náš Linktree.","Usa el formulario de contacto de abajo o escríbenos por nuestro Linktree.","Nutze das Kontaktformular unten oder schreib uns über unseren Linktree.","Skorzystaj z formularza kontaktowego poniżej lub napisz do nas przez Linktree.","Použi kontaktný formulár nižšie alebo nám napíš cez náš Linktree."],
+"Tell us what you want to create and we'll get back to you.":["Napiš nám, co chceš vytvořit, a ozveme se ti.","Cuéntanos qué quieres crear y te responderemos.","Sag uns, was du erstellen möchtest, und wir melden uns bei dir.","Napisz, co chcesz stworzyć, a odezwiemy się do ciebie.","Napíš nám, čo chceš vytvoriť, a ozveme sa ti."],
+"Fast answers":["Rychlé odpovědi","Respuestas rápidas","Schnelle Antworten","Szybkie odpowiedzi","Rýchle odpovede"],
+"Share as many details as you can — goals, style, deadline. The more we know, the better the result.":["Sdílej co nejvíc detailů — cíle, styl, termín. Čím víc víme, tím lepší bude výsledek.","Comparte tantos detalles como puedas: objetivos, estilo, plazo. Cuanto más sepamos, mejor será el resultado.","Teile so viele Details wie möglich – Ziele, Stil, Termin. Je mehr wir wissen, desto besser das Ergebnis.","Podaj jak najwięcej szczegółów — cele, styl, termin. Im więcej wiemy, tym lepszy efekt.","Zdieľaj čo najviac detailov — ciele, štýl, termín. Čím viac vieme, tým lepší bude výsledok."],
+"EMAIL":["E-MAIL","CORREO","E-MAIL","E-MAIL","E-MAIL"],
+"OPEN":["OTEVŘÍT","ABRIR","ÖFFNEN","OTWÓRZ","OTVORIŤ"],
+"COMING SOON":["BRZY","PRÓXIMAMENTE","BALD","WKRÓTCE","ČOSKORO"],
+"Your name":["Tvoje jméno","Tu nombre","Dein Name","Twoje imię","Tvoje meno"],
+"Subject":["Předmět","Asunto","Betreff","Temat","Predmet"],
+"What do you want to create?":["Co chceš vytvořit?","¿Qué quieres crear?","Was möchtest du erstellen?","Co chcesz stworzyć?","Čo chceš vytvoriť?"],
+"Where should we build your website?":["Na jaké platformě máme web vytvořit?","¿Dónde debemos crear tu sitio web?","Auf welcher Plattform sollen wir deine Website erstellen?","Na jakiej platformie mamy stworzyć twoją stronę?","Na akej platforme máme web vytvoriť?"],
+"Message":["Zpráva","Mensaje","Nachricht","Wiadomość","Správa"],
+"Choose…":["Vyber…","Elige…","Wählen…","Wybierz…","Vyber…"],
+"Website":["Web","Sitio web","Website","Strona internetowa","Web"],
+"Partnership":["Partnerství","Alianza","Partnerschaft","Partnerstwo","Partnerstvo"],
+"Other":["Jiné","Otro","Andere","Inne","Iné"],
+"Different":["Jiná","Otra","Andere","Inna","Iná"],
+"e.g. Website for my bus fan page":["např. Web pro mou fanouškovskou stránku o autobusech","p. ej. Web para mi página de fans de autobuses","z. B. Website für meine Bus-Fanseite","np. Strona dla mojego fanpage'a o autobusach","napr. Web pre moju fanúšikovskú stránku o autobusoch"],
+"Describe your idea…":["Popiš svůj nápad…","Describe tu idea…","Beschreibe deine Idee…","Opisz swój pomysł…","Opíš svoj nápad…"],
+"Send message":["Odeslat zprávu","Enviar mensaje","Nachricht senden","Wyślij wiadomość","Odoslať správu"],
+"Your email is ready!":["Tvůj e-mail je připraven!","¡Tu correo está listo!","Deine E-Mail ist bereit!","Twój e-mail jest gotowy!","Tvoj e-mail je pripravený!"],
+"Your email app should open automatically. If it didn't, use the button below.":["Tvoje e-mailová aplikace by se měla otevřít automaticky. Pokud ne, použij tlačítko níže.","Tu app de correo debería abrirse automáticamente. Si no, usa el botón de abajo.","Deine E-Mail-App sollte sich automatisch öffnen. Falls nicht, nutze die Schaltfläche unten.","Twoja aplikacja pocztowa powinna otworzyć się automatycznie. Jeśli nie, użyj przycisku poniżej.","Tvoja e-mailová aplikácia by sa mala otvoriť automaticky. Ak nie, použi tlačidlo nižšie."],
+"Open in email app":["Otevřít v e-mailové aplikaci","Abrir en la app de correo","In E-Mail-App öffnen","Otwórz w aplikacji pocztowej","Otvoriť v e-mailovej aplikácii"],
+"Copy":["Kopírovat","Copiar","Kopieren","Kopiuj","Kopírovať"],
+"Copied!":["Zkopírováno!","¡Copiado!","Kopiert!","Skopiowano!","Skopírované!"],
+"Websites, Roblox scripts, thumbnails & logos. Let's build something.":["Weby, Roblox skripty, miniatury a loga. Pojďme něco vytvořit.","Sitios web, scripts de Roblox, miniaturas y logos. Construyamos algo.","Websites, Roblox-Skripte, Thumbnails & Logos. Lass uns etwas bauen.","Strony internetowe, skrypty Roblox, miniatury i logo. Zbudujmy coś razem.","Weby, Roblox skripty, miniatúry a loga. Poďme niečo vytvoriť."],
+"Navigate":["Navigace","Navegar","Navigation","Nawigacja","Navigácia"],
+"Legal":["Právní informace","Legal","Rechtliches","Informacje prawne","Právne informácie"],
+"Social":["Sociální sítě","Redes","Soziale Medien","Social media","Sociálne siete"],
+"Email":["E-mail","Correo","E-Mail","E-mail","E-mail"],
+"More coming soon":["Další brzy","Más próximamente","Weitere folgen","Więcej wkrótce","Ďalšie čoskoro"],
+"Terms of Use":["Podmínky použití","Términos de uso","Nutzungsbedingungen","Warunki korzystania","Podmienky používania"],
+"Privacy Policy":["Zásady ochrany osobních údajů","Política de privacidad","Datenschutzerklärung","Polityka prywatności","Zásady ochrany osobných údajov"],
+"Legal documents are available in Czech and English. The English version is shown.":["","Los documentos legales están disponibles en checo e inglés. Se muestra la versión en inglés.","Die rechtlichen Dokumente gibt es auf Tschechisch und Englisch. Die englische Version wird angezeigt.","Dokumenty prawne są dostępne po czesku i angielsku. Wyświetlana jest wersja angielska.","Právne dokumenty sú dostupné v češtine a angličtine. Zobrazuje sa anglická verzia."],
+"New update!":["Novinka!","¡Novedad!","Neues Update!","Nowość!","Novinka!"],
+"Contact Tadeax":["Kontaktovat Tadeax","Contactar con Tadeax","Tadeax kontaktieren","Skontaktuj się z Tadeax","Kontaktovať Tadeax"],
+"Nevermind":["Nevadí","No importa","Schon gut","Nieważne","Nevadí"],
+"Ask TadxAI":["Zeptej se TadxAI","Pregunta a TadxAI","Frag TadxAI","Zapytaj TadxAI","Opýtaj sa TadxAI"],
+"Ask me anything…":["Zeptej se na cokoliv…","Pregúntame lo que quieras…","Frag mich etwas…","Zapytaj mnie o cokolwiek…","Opýtaj sa ma na čokoľvek…"]
+};
+
+const lb=(a,b,c,d,e)=>a+'<button type="button" class="fl" data-lg="terms">'+b+'</button>'+c+'<button type="button" class="fl" data-lg="privacy">'+d+'</button>'+e;
+// key -> [en, cs, es, de, pl, sk]
+const H={
+h_about:["Ahoj! We are <span>Tadeax Studio</span>","Ahoj! Jsme <span>Tadeax Studio</span>","¡Hola! Somos <span>Tadeax Studio</span>","Hallo! Wir sind <span>Tadeax Studio</span>","Cześć! Jesteśmy <span>Tadeax Studio</span>","Ahoj! Sme <span>Tadeax Studio</span>"],
+h_serv:["What we <span>create</span>","Co <span>tvoříme</span>","Lo que <span>creamos</span>","Was wir <span>erschaffen</span>","Co <span>tworzymy</span>","Čo <span>tvoríme</span>"],
+h_port:["Selected <span>projects</span>","Vybrané <span>projekty</span>","Proyectos <span>seleccionados</span>","Ausgewählte <span>Projekte</span>","Wybrane <span>projekty</span>","Vybrané <span>projekty</span>"],
+h_proc:["How we <span>work</span>","Jak <span>pracujeme</span>","Cómo <span>trabajamos</span>","So <span>arbeiten</span> wir","Jak <span>pracujemy</span>","Ako <span>pracujeme</span>"],
+h_part:["Our <span>partners</span>","Naši <span>partneři</span>","Nuestros <span>socios</span>","Unsere <span>Partner</span>","Nasi <span>partnerzy</span>","Naši <span>partneri</span>"],
+h_faq:["Good <span>questions</span>","Časté <span>dotazy</span>","Buenas <span>preguntas</span>","Gute <span>Fragen</span>","Dobre <span>pytania</span>","Časté <span>otázky</span>"],
+h_cont:["Let's <span>talk</span>","Pojďme si <span>promluvit</span>","<span>Hablemos</span>","Lass uns <span>reden</span>","<span>Porozmawiajmy</span>","Poďme sa <span>porozprávať</span>"],
+note:["<b>For your understanding:</b> websites are made by third-party distributors (Lovable, Vercel, Bolt.new, Rocket.new or another platform) and an AI is used to create these websites.","<b>Pro tvé pochopení:</b> weby vytvářejí třetí strany – distributoři (Lovable, Vercel, Bolt.new, Rocket.new nebo jiná platforma) a k jejich tvorbě se používá AI.","<b>Para tu información:</b> los sitios web los crean distribuidores externos (Lovable, Vercel, Bolt.new, Rocket.new u otra plataforma) y se usa una IA para crearlos.","<b>Zur Information:</b> Websites werden von Drittanbietern (Lovable, Vercel, Bolt.new, Rocket.new oder einer anderen Plattform) erstellt, und dabei kommt eine KI zum Einsatz.","<b>Dla twojej wiadomości:</b> strony tworzą zewnętrzni dystrybutorzy (Lovable, Vercel, Bolt.new, Rocket.new lub inna platforma), a do ich tworzenia używana jest sztuczna inteligencja.","<b>Pre tvoje pochopenie:</b> weby vytvárajú tretie strany – distribútori (Lovable, Vercel, Bolt.new, Rocket.new alebo iná platforma) a na ich tvorbu sa používa AI."],
+consent:[lb("I agree to the ","Terms of Use"," and ","Privacy Policy","."),lb("Souhlasím s ","podmínkami použití"," a ","zásadami ochrany osobních údajů","."),lb("Acepto los ","Términos de uso"," y la ","Política de privacidad","."),lb("Ich stimme den ","Nutzungsbedingungen"," und der ","Datenschutzerklärung"," zu."),lb("Akceptuję ","Warunki korzystania"," i ","Politykę prywatności","."),lb("Súhlasím s ","podmienkami používania"," a ","zásadami ochrany osobných údajov",".")],
+nbody:["Tadeax Studio now does <b>Logos, Roblox Scripts &amp; Thumbnails</b>.","Tadeax Studio nově tvoří <b>loga, Roblox skripty a miniatury</b>.","Tadeax Studio ahora también hace <b>logos, scripts de Roblox y miniaturas</b>.","Tadeax Studio macht jetzt auch <b>Logos, Roblox-Skripte &amp; Thumbnails</b>.","Tadeax Studio tworzy teraz także <b>logo, skrypty Roblox i miniatury</b>.","Tadeax Studio novo tvorí <b>loga, Roblox skripty a miniatúry</b>."],
+cp:["© 2026 Tadeax Studio, TadxInterface &amp; LunaStudio. All rights reserved. All designs, code, scripts, logos, text and visuals on this website are the intellectual property of Tadeax Studio and may not be copied, reproduced or redistributed without written permission. Third-party names and logos belong to their respective owners.",
+"© 2026 Tadeax Studio, TadxInterface &amp; LunaStudio. Všechna práva vyhrazena. Veškeré návrhy, kód, skripty, loga, texty a vizuály na tomto webu jsou duševním vlastnictvím Tadeax Studia a nesmí být kopírovány, reprodukovány ani šířeny bez písemného souhlasu. Názvy a loga třetích stran patří jejich příslušným vlastníkům.",
+"© 2026 Tadeax Studio, TadxInterface &amp; LunaStudio. Todos los derechos reservados. Todos los diseños, códigos, scripts, logos, textos y elementos visuales de este sitio son propiedad intelectual de Tadeax Studio y no pueden copiarse, reproducirse ni redistribuirse sin permiso por escrito. Los nombres y logos de terceros pertenecen a sus respectivos propietarios.",
+"© 2026 Tadeax Studio, TadxInterface &amp; LunaStudio. Alle Rechte vorbehalten. Alle Designs, Codes, Skripte, Logos, Texte und Visuals auf dieser Website sind geistiges Eigentum von Tadeax Studio und dürfen ohne schriftliche Genehmigung nicht kopiert, vervielfältigt oder weitergegeben werden. Namen und Logos Dritter gehören ihren jeweiligen Eigentümern.",
+"© 2026 Tadeax Studio, TadxInterface &amp; LunaStudio. Wszelkie prawa zastrzeżone. Wszystkie projekty, kody, skrypty, logo, teksty i grafiki na tej stronie są własnością intelektualną Tadeax Studio i nie mogą być kopiowane, powielane ani rozpowszechniane bez pisemnej zgody. Nazwy i logo podmiotów trzecich należą do ich właścicieli.",
+"© 2026 Tadeax Studio, TadxInterface &amp; LunaStudio. Všetky práva vyhradené. Všetky návrhy, kód, skripty, loga, texty a vizuály na tomto webe sú duševným vlastníctvom Tadeax Studia a nesmú byť kopírované, reprodukované ani šírené bez písomného súhlasu. Názvy a loga tretích strán patria ich príslušným vlastníkom."]
+};
+</script>
+
+<script>
 const $=s=>document.querySelector(s);
 // data
 const services=[["layout-dashboard","Websites","Modern, responsive sites built on Lovable, Vercel, Bolt.new or Rocket.new."],["gamepad-2","Roblox Scripts","Game systems, UI, tools and server-safe logic in Luau."],["image","YouTube Thumbnails","Click-worthy thumbnails with strong contrast and clear story."],["pen-tool","Logos","Clean, memorable brand marks in your colors."],["handshake","Partnerships","Collaborations, sponsorships and long-term projects."],["wand-2","Custom Work","Something different? We'll find a way to build it."]];
 $("#sv").innerHTML=services.map(s=>`<div class="card rv"><div class="ic"><i data-lucide="${s[0]}"></i></div><h3>${s[1]}</h3><p>${s[2]}</p></div>`).join("");
-const pf=[["Nase9","https://nase9.vercel.app/","Community-style website project."],["Tadx's Wallpapers","https://tadxs-wallpapers.vercel.app/","A wallpaper collection site."],["Tadx Mine","https://tadxmine.vercel.app/","Mining-themed web experience."],["Tadxio","https://tadxio.lovable.app/","Your Learning AI Partner."],["Tadx Easter","https://tadxeaster.vercel.app/","Seasonal Easter-themed website."],["MHD Praha","https://mhd-praha.vercel.app/","Public transport inspired project."]];
+const pf=[["Nase9","https://nase9.vercel.app/","Community-style website project."],["Tadx's Wallpapers","https://tadxs-wallpaper.vercel.app/","A wallpaper collection site."],["Tadx Mine","https://tadxmine.vercel.app/","Mining-themed web experience."],["Tadx Easter","https://tadxeaster.vercel.app/","Seasonal Easter-themed website."],["MHD Praha","https://mhd-praha.vercel.app/","Public transport inspired project."]];
 $("#pf").innerHTML=pf.map(p=>`<a class="card pf rv" href="${p[1]}" target="_blank" rel="noopener"><div class="ic"><i data-lucide="globe"></i></div><h3 style="margin:0">${p[0]}</h3><p>${p[2]}</p><div class="url mono">${p[1].replace("https://","")}</div><div class="arrow">Visit site <i data-lucide="arrow-up-right" width="18"></i></div></a>`).join("");
-const pt=[["Tadeaxovy Laboratoře","flask-conical"],["Tadeaxovo cestování","train-front"],["T&L Podcast","mic"],["CastleTrolley Studios","castle"],["TadeaxOS","app-window"],["LunaStudio","moon"],["TadxNova Productions","clapperboard"],["Tadxio - Your Learning AI Partner","graduation-cap"],["TadxCloud","cloud"],["TadxInterface","layout-template"]];
+const pt=[["Tadeaxovy Laboratoře","flask-conical"],["Tadeaxovo cestování","train-front"],["T&L Podcast","mic"],["CastleTrolley Studios","castle"],["TadeaxOS","app-window"],["TadxNova Productions","clapperboard"],["Tadxio - Your Learning AI Partner","graduation-cap"],["TadxCloud","cloud"],["TadxInterface","layout-template"]];
 $("#pt").innerHTML=pt.map(p=>`<div class="card pt rv"><div class="ic"><i data-lucide="${p[1]}"></i></div><h3>${p[0].replace("&","&amp;")}</h3><small class="mono or">PARTNER</small></div>`).join("");
 const mq=["Websites","Roblox Scripts","Thumbnails","Logos","Partnerships"].map((t,i)=>`<span><i data-lucide="${["globe","gamepad-2","image","pen-tool","handshake"][i]}"></i>${t}</span>`).join("");
 $("#mq").innerHTML=mq.repeat(6);
@@ -337,7 +474,7 @@ d.dataset.sp=(Math.random()*.25+.05).toFixed(2);d.innerHTML=`<i data-lucide="${n
 lucide.createIcons();
 addEventListener("scroll",()=>{const y=scrollY;fx.querySelectorAll(".fi").forEach(e=>e.parentElement.style.setProperty("--p",0));fx.style.transform=`translateY(${-(y*0.04)%60}px)`},{passive:true});
 // typewriter
-const ph=["Let's build something","Let's design your website","Let's script your game","Let's craft your logo","Let's make a thumbnail"];
+let ph=PHRASES[lang];
 let pi=0,ci=0,del=false;const tw=$("#tw");
 (function tick(){const w=ph[pi];ci+=del?-1:1;tw.textContent=w.slice(0,ci);let t=del?35:80;
 if(!del&&ci===w.length){del=true;t=1600}else if(del&&ci===0){del=false;pi=(pi+1)%ph.length;t=400}
@@ -359,7 +496,7 @@ let mx=0,my=0;addEventListener("mousemove",e=>{mx=(e.clientX/innerWidth-.5);my=(
 function rs(){const w=el.clientWidth,h=el.clientHeight;r.setSize(w,h);cam.aspect=w/h;cam.updateProjectionMatrix()}rs();addEventListener("resize",rs);
 let t=0;(function a(){t+=.01;g.rotation.y+=.006+mx*.01;g.rotation.x+=.003+my*.01;inner.rotation.y-=.02;inner.rotation.z+=.015;ring.rotation.z+=.01;g.position.y=Math.sin(t*2)*.2;r.render(sc,cam);requestAnimationFrame(a)})()})();
 // nav
-const lk=$("#links");$("#bg").onclick=()=>lk.classList.toggle("open");lk.querySelectorAll("a").forEach(a=>a.onclick=()=>lk.classList.remove("open"));
+const lk=$("#links");const bg=$("#bg");function menu(o){lk.classList.toggle("open",o);bg.innerHTML=`<i data-lucide="${o?"x":"menu"}"></i>`;lucide.createIcons()}bg.onclick=()=>menu(!lk.classList.contains("open"));lk.querySelectorAll("a").forEach(a=>a.onclick=()=>menu(false));document.addEventListener("click",e=>{if(lk.classList.contains("open")&&!e.target.closest("#links,#bg"))menu(false)});
 const secs=[...document.querySelectorAll("section")];
 addEventListener("scroll",()=>{let c="home";secs.forEach(s=>{if(scrollY+200>=s.offsetTop)c=s.id});lk.querySelectorAll("a").forEach(a=>a.classList.toggle("act",a.getAttribute("href")==="#"+c))},{passive:true});
 // reveal + counters
@@ -374,7 +511,7 @@ const sub=`[Tadeax Studio] ${d.get("subject")} - ${d.get("type")}`;
 const url=`mailto:tad.studio.cz@gmail.com?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(t)}`;
 $("#out").textContent=t;$("#ml").href=url;$("#ok").style.display="block";$("#ok").scrollIntoView({behavior:"smooth",block:"nearest"});
 setTimeout(()=>{location.href=url},300)};
-$("#cp").onclick=()=>{const b=$("#cp");try{navigator.clipboard.writeText($("#out").textContent)}catch(_){}b.textContent="Copied!"};
+$("#cp").onclick=()=>{const b=$("#cp");try{navigator.clipboard.writeText($("#out").textContent)}catch(_){}b.textContent=tr("Copied!")};
 // notification
 const note=$("#note");
 setTimeout(()=>note.classList.add("in"),2200);
@@ -383,7 +520,7 @@ $("#nn").onclick=close;$("#nc").onclick=()=>{close();$("#contact").scrollIntoVie
 
 // ---------- legal ----------
 const CO="<b>Tadeax Studio</b>, <b>TadxInterface</b> and <b>LunaStudio</b>";
-const LEGAL={
+const LEGAL_EN={
 terms:["Terms of Use",`<p><i>Last updated: October 9, 2026</i></p>
 <h4>1. Who we are</h4><p>This website is operated jointly by ${CO} (together “the Companies”, “we”, “us”). By using this website you agree to these Terms.</p>
 <h4>2. Our services</h4><p>The Companies offer web services, Roblox scripts, YouTube thumbnails, logos, partnerships and music projects. A request sent through this site is not a binding contract. Scope, price and deadline are agreed individually before work starts.</p>
@@ -405,50 +542,162 @@ privacy:["Privacy Policy",`<p><i>Last updated: October 9, 2026</i></p>
 <h4>7. Your rights</h4><p>You may request access, correction, deletion, restriction or portability of your data, object to processing, and complain to the Czech Office for Personal Data Protection (ÚOOÚ).</p>
 <h4>8. Children</h4><p>This website is not intended for children under 15 without parental consent.</p>
 <h4>9. Contact</h4><p><a href="mailto:tad.studio.cz@gmail.com" style="color:var(--o)">tad.studio.cz@gmail.com</a></p>`]};
-function openLg(k){$("#lgt").textContent=LEGAL[k][0];$("#lgb").innerHTML=LEGAL[k][1];$("#lgb").scrollTop=0;$("#lgm").classList.add("show")}
+let curLg="terms";
+function openLg(k){curLg=k;const d=(lang==="cs"?LEGAL_CS:LEGAL_EN)[k];$("#lgt").textContent=lang==="cs"?d[0]:tr(d[0]);const note=(lang==="cs"||lang==="en")?"":`<p><i>${tr("Legal documents are available in Czech and English. The English version is shown.")}</i></p>`;$("#lgb").innerHTML=note+d[1];$("#lgb").scrollTop=0;$("#lgm").classList.add("show")}
 document.addEventListener("click",e=>{const t=e.target.closest("[data-lg]");if(t){e.preventDefault();openLg(t.dataset.lg)}});
 $("#lgx").onclick=()=>$("#lgm").classList.remove("show");
 $("#lgm").onclick=e=>{if(e.target.id==="lgm")$("#lgm").classList.remove("show")};
 addEventListener("keydown",e=>{if(e.key==="Escape")$("#lgm").classList.remove("show")});
 
+// ---------- Czech legal ----------
+const CCO="<b>Tadeax Studio</b>, <b>TadxInterface</b> a <b>LunaStudio</b>";
+const LEGAL_CS={
+terms:["Podmínky použití",`<p><i>Naposledy aktualizováno: 9. října 2026</i></p>
+<h4>1. Kdo jsme</h4><p>Tento web společně provozují ${CCO} (dále jen „Společnosti“, „my“). Používáním webu souhlasíš s těmito Podmínkami.</p>
+<h4>2. Naše služby</h4><p>Společnosti nabízejí webové služby, Roblox skripty, YouTube miniatury, loga, partnerství a hudební projekty. Poptávka odeslaná přes tento web není závaznou smlouvou. Rozsah, cena a termín se dohodnou individuálně před zahájením práce.</p>
+<h4>3. Platformy třetích stran a AI</h4><p>Weby vytvářejí distributoři třetích stran (např. Lovable, Vercel, Bolt.new, Rocket.new nebo jiná platforma) a k jejich tvorbě se používá AI. Tyto platformy jsou na Společnostech nezávislé a mají vlastní podmínky, ceny a dostupnost. Neneseme odpovědnost za změny, výpadky ani pravidla platforem třetích stran. Výstup vytvořený AI může obsahovat chyby; před předáním ho kontrolujeme, nemůžeme však zaručit, že je bezchybný.</p>
+<h4>4. Duševní vlastnictví</h4><p>Veškeré návrhy, kód, skripty, loga, texty a vizuály na tomto webu patří Společnostem a nesmí být kopírovány ani šířeny bez písemného souhlasu. Názvy a loga třetích stran patří jejich vlastníkům. Práva k dodané práci se převádějí tak, jak je dohodnuto v jednotlivé zakázce.</p>
+<h4>5. Přijatelné použití</h4><p>Nezneužívej tento web, nesnaž se narušit jeho provoz, neposílej přes kontaktní formulář ani chatbota TadxAI protiprávní nebo urážlivý obsah a nepoužívej práci Společností způsobem, který porušuje práva jiných.</p>
+<h4>6. Chatbot TadxAI</h4><p>TadxAI je automatický asistent poskytující obecné informace o Společnostech a o tvorbě webů. Neposkytuje právní, finanční ani odborné poradenství a jeho odpovědi nejsou nabídkou ani smlouvou.</p>
+<h4>7. Odkazy na jiné weby</h4><p>Web odkazuje na externí stránky (např. Linktree a naše portfolio). Za jejich obsah neneseme odpovědnost.</p>
+<h4>8. Odpovědnost</h4><p>Web je poskytován „tak, jak je“. V rozsahu povoleném zákonem Společnosti neodpovídají za nepřímé škody vzniklé používáním webu.</p>
+<h4>9. Změny a rozhodné právo</h4><p>Tyto Podmínky můžeme kdykoli změnit; datum výše označuje poslední verzi. Řídí se právem České republiky.</p>
+<h4>10. Kontakt</h4><p><a href="mailto:tad.studio.cz@gmail.com" style="color:var(--o)">tad.studio.cz@gmail.com</a></p>`],
+privacy:["Zásady ochrany osobních údajů",`<p><i>Naposledy aktualizováno: 9. října 2026</i></p>
+<h4>1. Správci</h4><p>Správci osobních údajů shromažďovaných přes tento web jsou ${CCO}.</p>
+<h4>2. Co shromažďujeme</h4><ul><li><b>Kontaktní formulář:</b> jméno, předmět, typ projektu, volba platformy a zpráva. Formulář otevře tvoji e-mailovou aplikaci a zpráva nám přijde e-mailem. Web sám údaje neukládá na žádný server.</li><li><b>Chatbot TadxAI:</b> zprávy se zpracovávají ve tvém prohlížeči a neodesílají se ani neukládají na našich serverech.</li><li><b>Technické údaje:</b> web načítá písma a skripty od třetích stran (Google Fonts, jsDelivr, cdnjs), které mohou obdržet tvoji IP adresu a údaje o prohlížeči.</li></ul>
+<h4>3. Cookies a sledování</h4><p>Na tomto webu nepoužíváme reklamní cookies ani analytiku.</p>
+<h4>4. Proč údaje používáme</h4><p>Pouze k vyřízení tvé poptávky, přípravě nabídky a dodání dohodnuté práce. Právní základ: tvoje žádost a kroky před uzavřením smlouvy (čl. 6 odst. 1 písm. b) GDPR) a náš oprávněný zájem komunikovat s tebou (čl. 6 odst. 1 písm. f)).</p>
+<h4>5. Sdílení</h4><p>Údaje neprodáváme. Když se web vytváří na platformě třetí strany (Lovable, Vercel, Bolt.new, Rocket.new nebo jiné), mohou informace potřebné pro projekt a nástroje AI zpracovávat tito poskytovatelé podle vlastních zásad ochrany soukromí.</p>
+<h4>6. Doba uchování</h4><p>E-maily uchováváme jen po dobu potřebnou pro vyřízení poptávky a navazující spolupráci, nebo dle požadavků zákona.</p>
+<h4>7. Tvoje práva</h4><p>Můžeš požádat o přístup, opravu, výmaz, omezení zpracování či přenositelnost údajů, vznést námitku a podat stížnost u Úřadu pro ochranu osobních údajů (ÚOOÚ).</p>
+<h4>8. Děti</h4><p>Web není určen dětem do 15 let bez souhlasu rodičů.</p>
+<h4>9. Kontakt</h4><p><a href="mailto:tad.studio.cz@gmail.com" style="color:var(--o)">tad.studio.cz@gmail.com</a></p>`]};
+
 // ---------- TadxAI ----------
-const L=(h,t)=>`<a href="${h}" data-go>${t}</a>`;
-const KB=[
-{k:["hello","hi","hey","ahoj","čau","cau","hola","good morning"],a:`Hi! I'm <b>TadxAI</b>, the assistant of Tadeax Studio. I can help you create a website, tell you about the studio, services, portfolio, partners or how to contact us. What would you like to know?`},
-{k:["how to create","create a website","make a website","build a website","build website","create website","make website","website","web","page","landing","vytvořit web","jak vytvořit","stránk"],a:`Here's a simple way to create a website:<ol><li><b>Define the idea</b> – purpose, audience, pages you need, colors and style.</li><li><b>Write a clear prompt</b> – describe the layout, sections, texts and features (forms, animations, language).</li><li><b>Pick a platform</b> – Lovable, Bolt.new or Rocket.new generate a site from your prompt with AI. Vercel hosts and publishes it.</li><li><b>Iterate</b> – ask for small changes step by step and check the result on mobile and desktop.</li><li><b>Publish</b> – deploy (for example on Vercel), then add a custom domain if you want.</li></ol>Want us to do it for you? Choose <b>Website</b> in the ${L("#contact","contact form")}. Note: our websites are made by third-party distributors using an AI.`},
-{k:["platform","lovable","vercel","bolt","rocket","distribut","which tool","which platform","different"],a:`Platforms we work with: <b>Lovable</b>, <b>Vercel</b>, <b>Bolt.new</b>, <b>Rocket.new</b> or a different one. Lovable, Bolt.new and Rocket.new create websites from AI prompts, while Vercel is mainly for hosting and publishing. You choose the platform in the ${L("#contact","contact form")}.`},
-{k:["prompt","tips","advice","tip"],a:`Tips for a good AI website prompt:<ul><li>Say what the site is for and who will use it.</li><li>List the sections (home, about, contact…).</li><li>Describe colors, fonts and mood (e.g. black &amp; orange, modern).</li><li>Mention features: forms, animations, language, mobile layout.</li><li>Change one thing at a time when you iterate.</li></ul>`},
-{k:["about","who are you","who is","tadeax","studio","what is","kdo jste","o nás","story"],a:`<b>Tadeax Studio</b> is an independent creative studio from Czechia. It started as a YouTube channel and grew into a place for websites, visual identities and playful digital worlds. It's run by a YouTuber and programmer who loves trains and public transport, and also makes music. See the ${L("#about","About section")}.`},
-{k:["service","offer","do you do","what do you","služby","nabíz"],a:`We offer: <b>Websites</b>, <b>Roblox Scripts</b>, <b>YouTube Thumbnails</b>, <b>Logos</b>, <b>Partnerships</b> and custom work. Details in ${L("#services","Services")}.`},
-{k:["roblox","script","luau","game"],a:`We make Roblox scripts – game systems, UI, tools and logic. Tell us your idea through the ${L("#contact","contact form")} and choose <b>Roblox Scripts</b>.`},
-{k:["thumbnail","youtube","miniatur"],a:`We create YouTube thumbnails that stand out. Choose <b>YouTube Thumbnails</b> in the ${L("#contact","contact form")} and describe your video.`},
-{k:["logo","brand","identity"],a:`We design logos and visual identities. Select <b>Logo</b> in the ${L("#contact","contact form")} and tell us about your style and colors.`},
-{k:["portfolio","project","example","work","ukázk","projekt"],a:`See our live work in the ${L("#portfolio","Portfolio")}: Nase9, Tadx's Wallpapers, Tadx Mine, Tadx Easter and MHD Praha.`},
-{k:["partner","tadxos","tadxcloud","tadxnova","tadxio","tadxinterface","castletrolley","podcast","laborato","cestov","lunastudio","luna"],a:`Our partners: Tadeaxovy Laboratoře, Tadeaxovo cestování, T&amp;L Podcast, CastleTrolley Studios, TadeaxOS, TadxNova Productions, Tadxio, TadxCloud and TadxInterface. This website is operated by Tadeax Studio, TadxInterface and LunaStudio. See ${L("#partners","Partners")}.`},
-{k:["contact","email","mail","reach","kontakt","napsat","hire","order","objedn"],a:`Use the ${L("#contact","contact form")} – it opens your email app with a ready message to <b>tad.studio.cz@gmail.com</b>. You can also find us on <a href="https://linktr.ee/tadeax_studio.cz" target="_blank" rel="noopener">Linktree</a>.`},
-{k:["price","cost","how much","pricing","cena","kolik","free"],a:`Prices depend on the project, so there's no fixed price list. Describe your idea in the ${L("#contact","contact form")} and we'll reply with an offer.`},
-{k:["term","terms","privacy","gdpr","data","legal","policy","podmínky","soukrom"],a:`You can read our <button class="fl" data-lg="terms">Terms of Use</button> and <button class="fl" data-lg="privacy">Privacy Policy</button>. In short: this chat runs in your browser, and the contact form only opens your email app.`},
-{k:["ai","artificial","gpt","bot","chatbot","tadxai"],a:`I'm <b>TadxAI</b>, a helper built into this website. I answer from information about Tadeax Studio and general website-building tips. Websites made by the studio are created by third-party platforms using an AI.`},
-{k:["thank","thanks","díky","dík","dekuji","děkuji"],a:`You're welcome! Anything else I can help with?`},
-{k:["bye","goodbye","nashle","sbohem"],a:`Bye! Come back any time. 🟠`}
-];
-const SUG=["How to create a website","About Tadeax Studio","Services","Portfolio","Partners","Contact"];
+const go=(h,t)=>`<a href="${h}" data-go>${t}</a>`;
+const LK='<a href="https://linktr.ee/tadeax_studio.cz" target="_blank" rel="noopener">Linktree</a>';
+const KB={
+greet:{k:["hello","hey","ahoj","cau","hola","hallo","czesc","buenas","guten tag","dobry den"],a:{
+en:`Hi! I'm <b>TadxAI</b>, the assistant of Tadeax Studio. I can help you create a website and tell you about the studio, services, portfolio, partners or how to contact us.`,
+cs:`Ahoj! Jsem <b>TadxAI</b>, asistent Tadeax Studia. Pomůžu ti s vytvořením webu a poradím ohledně studia, služeb, portfolia, partnerů i kontaktu.`,
+es:`¡Hola! Soy <b>TadxAI</b>, el asistente de Tadeax Studio. Puedo ayudarte a crear un sitio web y contarte sobre el estudio, los servicios, el portafolio, los socios o cómo contactarnos.`,
+de:`Hallo! Ich bin <b>TadxAI</b>, der Assistent von Tadeax Studio. Ich helfe dir beim Erstellen einer Website und informiere dich über Studio, Leistungen, Portfolio, Partner und Kontakt.`,
+pl:`Cześć! Jestem <b>TadxAI</b>, asystent Tadeax Studio. Pomogę ci stworzyć stronę i opowiem o studiu, usługach, portfolio, partnerach oraz kontakcie.`,
+sk:`Ahoj! Som <b>TadxAI</b>, asistent Tadeax Studia. Pomôžem ti s vytvorením webu a poradím ohľadom štúdia, služieb, portfólia, partnerov aj kontaktu.`}},
+web:{k:["website","web","create","build","crear","sitio","erstellen","webseite","stworzyc","strone","stronk","vytvor","stranky","pagina","prompt","tip"],a:{
+en:`How to create a website:<ol><li><b>Define the idea</b> – purpose, audience, pages, colors and style.</li><li><b>Write a clear prompt</b> – describe layout, sections, texts and features.</li><li><b>Pick a platform</b> – Lovable, Bolt.new and Rocket.new create a site from your prompt with AI; Vercel hosts and publishes it.</li><li><b>Iterate</b> – change one thing at a time and check mobile and desktop.</li><li><b>Publish</b> – deploy (e.g. on Vercel) and add a custom domain if you like.</li></ol>Want us to do it? Choose <b>Website</b> in the ${go("#contact","contact form")}. Our websites are made by third-party distributors using an AI.`,
+cs:`Jak vytvořit web:<ol><li><b>Vymysli záměr</b> – účel, publikum, stránky, barvy a styl.</li><li><b>Napiš jasný prompt</b> – popiš rozvržení, sekce, texty a funkce.</li><li><b>Vyber platformu</b> – Lovable, Bolt.new a Rocket.new vytvoří web z promptu pomocí AI; Vercel web hostuje a publikuje.</li><li><b>Postupně upravuj</b> – měň vždy jednu věc a zkontroluj mobil i počítač.</li><li><b>Publikuj</b> – nasaď web (např. na Vercelu) a případně přidej vlastní doménu.</li></ol>Chceš, ať to uděláme my? Vyber <b>Web</b> v ${go("#contact","kontaktním formuláři")}. Naše weby vytvářejí distributoři třetích stran pomocí AI.`,
+es:`Cómo crear un sitio web:<ol><li><b>Define la idea</b>: objetivo, público, páginas, colores y estilo.</li><li><b>Escribe un prompt claro</b>: describe diseño, secciones, textos y funciones.</li><li><b>Elige una plataforma</b>: Lovable, Bolt.new y Rocket.new crean el sitio con IA a partir de tu prompt; Vercel lo aloja y publica.</li><li><b>Itera</b>: cambia una cosa a la vez y revisa móvil y escritorio.</li><li><b>Publica</b>: despliega (p. ej. en Vercel) y añade un dominio propio si quieres.</li></ol>¿Quieres que lo hagamos nosotros? Elige <b>Sitio web</b> en el ${go("#contact","formulario de contacto")}. Nuestros sitios los crean distribuidores externos usando IA.`,
+de:`So erstellst du eine Website:<ol><li><b>Idee festlegen</b> – Zweck, Zielgruppe, Seiten, Farben und Stil.</li><li><b>Klaren Prompt schreiben</b> – beschreibe Layout, Bereiche, Texte und Funktionen.</li><li><b>Plattform wählen</b> – Lovable, Bolt.new und Rocket.new erstellen aus deinem Prompt per KI eine Seite; Vercel hostet und veröffentlicht sie.</li><li><b>Schrittweise verbessern</b> – ändere jeweils nur eine Sache und prüfe Handy und Desktop.</li><li><b>Veröffentlichen</b> – deploye (z. B. auf Vercel) und füge optional eine eigene Domain hinzu.</li></ol>Sollen wir das übernehmen? Wähle <b>Website</b> im ${go("#contact","Kontaktformular")}. Unsere Websites werden von Drittanbietern mit KI erstellt.`,
+pl:`Jak stworzyć stronę:<ol><li><b>Ustal pomysł</b> – cel, odbiorców, podstrony, kolory i styl.</li><li><b>Napisz jasny prompt</b> – opisz układ, sekcje, teksty i funkcje.</li><li><b>Wybierz platformę</b> – Lovable, Bolt.new i Rocket.new tworzą stronę z promptu za pomocą AI; Vercel ją hostuje i publikuje.</li><li><b>Poprawiaj krok po kroku</b> – zmieniaj jedną rzecz naraz i sprawdzaj telefon oraz komputer.</li><li><b>Opublikuj</b> – wdróż (np. na Vercel) i opcjonalnie dodaj własną domenę.</li></ol>Chcesz, żebyśmy to zrobili my? Wybierz <b>Strona internetowa</b> w ${go("#contact","formularzu kontaktowym")}. Nasze strony tworzą zewnętrzni dystrybutorzy z użyciem AI.`,
+sk:`Ako vytvoriť web:<ol><li><b>Vymysli zámer</b> – účel, publikum, stránky, farby a štýl.</li><li><b>Napíš jasný prompt</b> – opíš rozloženie, sekcie, texty a funkcie.</li><li><b>Vyber platformu</b> – Lovable, Bolt.new a Rocket.new vytvoria web z promptu pomocou AI; Vercel web hostuje a publikuje.</li><li><b>Postupne upravuj</b> – meň vždy jednu vec a skontroluj mobil aj počítač.</li><li><b>Publikuj</b> – nasaď web (napr. na Verceli) a prípadne pridaj vlastnú doménu.</li></ol>Chceš, aby sme to urobili my? Vyber <b>Web</b> v ${go("#contact","kontaktnom formulári")}. Naše weby vytvárajú distribútori tretích strán pomocou AI.`}},
+platform:{k:["platform","lovable","vercel","bolt","rocket","plataforma","plattform","platforma","platforme"],a:{
+en:`We work with <b>Lovable</b>, <b>Vercel</b>, <b>Bolt.new</b>, <b>Rocket.new</b> or a different platform. Lovable, Bolt.new and Rocket.new generate sites from AI prompts; Vercel is mainly for hosting. Choose yours in the ${go("#contact","contact form")}.`,
+cs:`Pracujeme s <b>Lovable</b>, <b>Vercel</b>, <b>Bolt.new</b>, <b>Rocket.new</b> nebo jinou platformou. Lovable, Bolt.new a Rocket.new generují weby z AI promptů; Vercel slouží hlavně k hostingu. Vybereš v ${go("#contact","kontaktním formuláři")}.`,
+es:`Trabajamos con <b>Lovable</b>, <b>Vercel</b>, <b>Bolt.new</b>, <b>Rocket.new</b> u otra plataforma. Lovable, Bolt.new y Rocket.new generan sitios con prompts de IA; Vercel es sobre todo para alojamiento. Elige en el ${go("#contact","formulario de contacto")}.`,
+de:`Wir arbeiten mit <b>Lovable</b>, <b>Vercel</b>, <b>Bolt.new</b>, <b>Rocket.new</b> oder einer anderen Plattform. Lovable, Bolt.new und Rocket.new erzeugen Seiten aus KI-Prompts; Vercel dient vor allem dem Hosting. Wähle im ${go("#contact","Kontaktformular")}.`,
+pl:`Pracujemy z <b>Lovable</b>, <b>Vercel</b>, <b>Bolt.new</b>, <b>Rocket.new</b> lub inną platformą. Lovable, Bolt.new i Rocket.new generują strony z promptów AI; Vercel służy głównie do hostingu. Wybierz w ${go("#contact","formularzu kontaktowym")}.`,
+sk:`Pracujeme s <b>Lovable</b>, <b>Vercel</b>, <b>Bolt.new</b>, <b>Rocket.new</b> alebo inou platformou. Lovable, Bolt.new a Rocket.new generujú weby z AI promptov; Vercel slúži hlavne na hosting. Vyberieš v ${go("#contact","kontaktnom formulári")}.`}},
+about:{k:["about","who","tadeax","studio","o nas","sobre","uber","kdo","quien","wer","kim","kto","story","historia","geschichte"],a:{
+en:`<b>Tadeax Studio</b> is an independent creative studio from Czechia. It started as a YouTube channel and grew into a place for websites, visual identities and playful digital worlds. It's run by a YouTuber and programmer who loves trains and public transport, and also makes music. ${go("#about","About")}`,
+cs:`<b>Tadeax Studio</b> je nezávislé kreativní studio z Česka. Začalo jako YouTube kanál a vyrostlo v místo pro weby, vizuální identity a hravé digitální světy. Stojí za ním youtuber a programátor, který miluje vlaky a MHD a také tvoří hudbu. ${go("#about","Více v sekci O nás")}`,
+es:`<b>Tadeax Studio</b> es un estudio creativo independiente de Chequia. Empezó como canal de YouTube y creció hasta crear sitios web, identidades visuales y mundos digitales divertidos. Lo dirige un youtuber y programador que ama los trenes y el transporte público, y que también hace música. ${go("#about","Ver Nosotros")}`,
+de:`<b>Tadeax Studio</b> ist ein unabhängiges Kreativstudio aus Tschechien. Es begann als YouTube-Kanal und wurde zum Ort für Websites, visuelle Identitäten und verspielte digitale Welten. Dahinter steckt ein YouTuber und Programmierer, der Züge und den Nahverkehr liebt und auch Musik macht. ${go("#about","Mehr unter Über uns")}`,
+pl:`<b>Tadeax Studio</b> to niezależne studio kreatywne z Czech. Zaczęło jako kanał na YouTube, a wyrosło na miejsce tworzenia stron, identyfikacji wizualnych i zabawnych światów cyfrowych. Stoi za nim youtuber i programista, który kocha pociągi i transport publiczny, a także tworzy muzykę. ${go("#about","Więcej w sekcji O nas")}`,
+sk:`<b>Tadeax Studio</b> je nezávislé kreatívne štúdio z Česka. Začalo ako YouTube kanál a vyrástlo na miesto pre weby, vizuálne identity a hravé digitálne svety. Stojí za ním youtuber a programátor, ktorý miluje vlaky a MHD a tvorí aj hudbu. ${go("#about","Viac v sekcii O nás")}`}},
+services:{k:["service","offer","roblox","script","thumbnail","logo","sluzb","nabiz","servicio","leistung","angebot","uslug","oferta","miniatur"],a:{
+en:`We offer <b>Websites</b>, <b>Roblox Scripts</b>, <b>YouTube Thumbnails</b>, <b>Logos</b>, <b>Partnerships</b> and custom work. ${go("#services","See Services")}`,
+cs:`Nabízíme <b>weby</b>, <b>Roblox skripty</b>, <b>YouTube miniatury</b>, <b>loga</b>, <b>partnerství</b> a práci na míru. ${go("#services","Zobrazit služby")}`,
+es:`Ofrecemos <b>sitios web</b>, <b>scripts de Roblox</b>, <b>miniaturas de YouTube</b>, <b>logos</b>, <b>alianzas</b> y trabajos a medida. ${go("#services","Ver servicios")}`,
+de:`Wir bieten <b>Websites</b>, <b>Roblox-Skripte</b>, <b>YouTube-Thumbnails</b>, <b>Logos</b>, <b>Partnerschaften</b> und individuelle Projekte. ${go("#services","Leistungen ansehen")}`,
+pl:`Oferujemy <b>strony internetowe</b>, <b>skrypty Roblox</b>, <b>miniatury YouTube</b>, <b>logo</b>, <b>partnerstwa</b> i projekty na zamówienie. ${go("#services","Zobacz usługi")}`,
+sk:`Ponúkame <b>weby</b>, <b>Roblox skripty</b>, <b>YouTube miniatúry</b>, <b>loga</b>, <b>partnerstvá</b> a prácu na mieru. ${go("#services","Zobraziť služby")}`}},
+portfolio:{k:["portfolio","project","example","work","projekt","proyecto","beispiel","praca","prace","ukazk"],a:{
+en:`See our live work in the ${go("#portfolio","Portfolio")}: Nase9, Tadx's Wallpapers, Tadx Mine, Tadx Easter and MHD Praha.`,
+cs:`Naši živou práci najdeš v ${go("#portfolio","Portfoliu")}: Nase9, Tadx's Wallpapers, Tadx Mine, Tadx Easter a MHD Praha.`,
+es:`Mira nuestro trabajo en el ${go("#portfolio","Portafolio")}: Nase9, Tadx's Wallpapers, Tadx Mine, Tadx Easter y MHD Praha.`,
+de:`Unsere Arbeiten findest du im ${go("#portfolio","Portfolio")}: Nase9, Tadx's Wallpapers, Tadx Mine, Tadx Easter und MHD Praha.`,
+pl:`Nasze prace znajdziesz w ${go("#portfolio","Portfolio")}: Nase9, Tadx's Wallpapers, Tadx Mine, Tadx Easter i MHD Praha.`,
+sk:`Našu živú prácu nájdeš v ${go("#portfolio","Portfóliu")}: Nase9, Tadx's Wallpapers, Tadx Mine, Tadx Easter a MHD Praha.`}},
+partners:{k:["partner","socio","tadxos","tadxcloud","tadxnova","tadxio","tadxinterface","castletrolley","podcast","laborato","cestov","lunastudio","luna"],a:{
+en:`Our partners: Tadeaxovy Laboratoře, Tadeaxovo cestování, T&amp;L Podcast, CastleTrolley Studios, TadeaxOS, TadxNova Productions, Tadxio, TadxCloud and TadxInterface. This site is operated by Tadeax Studio, TadxInterface and LunaStudio. ${go("#partners","See Partners")}`,
+cs:`Naši partneři: Tadeaxovy Laboratoře, Tadeaxovo cestování, T&amp;L Podcast, CastleTrolley Studios, TadeaxOS, TadxNova Productions, Tadxio, TadxCloud a TadxInterface. Web provozují Tadeax Studio, TadxInterface a LunaStudio. ${go("#partners","Zobrazit partnery")}`,
+es:`Nuestros socios: Tadeaxovy Laboratoře, Tadeaxovo cestování, T&amp;L Podcast, CastleTrolley Studios, TadeaxOS, TadxNova Productions, Tadxio, TadxCloud y TadxInterface. Este sitio lo operan Tadeax Studio, TadxInterface y LunaStudio. ${go("#partners","Ver socios")}`,
+de:`Unsere Partner: Tadeaxovy Laboratoře, Tadeaxovo cestování, T&amp;L Podcast, CastleTrolley Studios, TadeaxOS, TadxNova Productions, Tadxio, TadxCloud und TadxInterface. Diese Seite wird von Tadeax Studio, TadxInterface und LunaStudio betrieben. ${go("#partners","Partner ansehen")}`,
+pl:`Nasi partnerzy: Tadeaxovy Laboratoře, Tadeaxovo cestování, T&amp;L Podcast, CastleTrolley Studios, TadeaxOS, TadxNova Productions, Tadxio, TadxCloud i TadxInterface. Stronę prowadzą Tadeax Studio, TadxInterface i LunaStudio. ${go("#partners","Zobacz partnerów")}`,
+sk:`Naši partneri: Tadeaxovy Laboratoře, Tadeaxovo cestování, T&amp;L Podcast, CastleTrolley Studios, TadeaxOS, TadxNova Productions, Tadxio, TadxCloud a TadxInterface. Web prevádzkujú Tadeax Studio, TadxInterface a LunaStudio. ${go("#partners","Zobraziť partnerov")}`}},
+contact:{k:["contact","email","mail","price","cost","how much","pricing","hire","order","kontakt","cena","kolik","objedn","napsat","precio","cuanto","contacto","preis","kosten","cennik","koszt","kolko"],a:{
+en:`Use the ${go("#contact","contact form")} – it opens your email app with a ready message to <b>tad.studio.cz@gmail.com</b>. Prices depend on the project, so describe your idea and we'll reply with an offer. Also find us on ${LK}.`,
+cs:`Použij ${go("#contact","kontaktní formulář")} – otevře tvoji e-mailovou aplikaci s hotovou zprávou pro <b>tad.studio.cz@gmail.com</b>. Cena závisí na projektu, popiš nám nápad a odpovíme nabídkou. Najdeš nás i na ${LK}.`,
+es:`Usa el ${go("#contact","formulario de contacto")}: abre tu app de correo con un mensaje listo para <b>tad.studio.cz@gmail.com</b>. El precio depende del proyecto; describe tu idea y responderemos con una oferta. También estamos en ${LK}.`,
+de:`Nutze das ${go("#contact","Kontaktformular")} – es öffnet deine E-Mail-App mit einer fertigen Nachricht an <b>tad.studio.cz@gmail.com</b>. Der Preis hängt vom Projekt ab; beschreibe deine Idee und wir antworten mit einem Angebot. Du findest uns auch auf ${LK}.`,
+pl:`Skorzystaj z ${go("#contact","formularza kontaktowego")} – otworzy twoją aplikację pocztową z gotową wiadomością do <b>tad.studio.cz@gmail.com</b>. Cena zależy od projektu; opisz pomysł, a odpowiemy ofertą. Znajdziesz nas też na ${LK}.`,
+sk:`Použi ${go("#contact","kontaktný formulár")} – otvorí tvoju e-mailovú aplikáciu s hotovou správou pre <b>tad.studio.cz@gmail.com</b>. Cena závisí od projektu, opíš nám nápad a odpovieme ponukou. Nájdeš nás aj na ${LK}.`}},
+legal:{k:["terms","privacy","gdpr","data","legal","policy","podminky","soukrom","terminos","privacidad","datenschutz","nutzungsbedingungen","warunki","prywatnosc","zasady","podmienky"],a:{
+en:`You can read our <button class="fl" data-lg="terms">Terms of Use</button> and <button class="fl" data-lg="privacy">Privacy Policy</button>. In short: this chat runs in your browser, and the contact form only opens your email app.`,
+cs:`Přečti si naše <button class="fl" data-lg="terms">Podmínky použití</button> a <button class="fl" data-lg="privacy">Zásady ochrany osobních údajů</button>. Ve zkratce: chat běží ve tvém prohlížeči a kontaktní formulář jen otevře e-mailovou aplikaci.`,
+es:`Puedes leer nuestros <button class="fl" data-lg="terms">Términos de uso</button> y la <button class="fl" data-lg="privacy">Política de privacidad</button>. En resumen: este chat funciona en tu navegador y el formulario solo abre tu app de correo.`,
+de:`Du kannst unsere <button class="fl" data-lg="terms">Nutzungsbedingungen</button> und die <button class="fl" data-lg="privacy">Datenschutzerklärung</button> lesen. Kurz: Dieser Chat läuft in deinem Browser, und das Kontaktformular öffnet nur deine E-Mail-App.`,
+pl:`Przeczytaj nasze <button class="fl" data-lg="terms">Warunki korzystania</button> i <button class="fl" data-lg="privacy">Politykę prywatności</button>. W skrócie: czat działa w twojej przeglądarce, a formularz tylko otwiera aplikację pocztową.`,
+sk:`Prečítaj si naše <button class="fl" data-lg="terms">Podmienky používania</button> a <button class="fl" data-lg="privacy">Zásady ochrany osobných údajov</button>. V skratke: chat beží v tvojom prehliadači a kontaktný formulár len otvorí e-mailovú aplikáciu.`}},
+ai:{k:["chatbot","tadxai","artificial","umela","inteligen","kuenstlich","sztuczn"," bot"],a:{
+en:`I'm <b>TadxAI</b>, a helper built into this website. I answer from information about Tadeax Studio and general website-building tips.`,
+cs:`Jsem <b>TadxAI</b>, pomocník zabudovaný do tohoto webu. Odpovídám z informací o Tadeax Studiu a obecných tipů pro tvorbu webů.`,
+es:`Soy <b>TadxAI</b>, un ayudante integrado en este sitio. Respondo con información sobre Tadeax Studio y consejos generales para crear sitios web.`,
+de:`Ich bin <b>TadxAI</b>, ein Helfer auf dieser Website. Ich antworte anhand von Informationen über Tadeax Studio und allgemeinen Tipps zum Erstellen von Websites.`,
+pl:`Jestem <b>TadxAI</b>, pomocnik wbudowany w tę stronę. Odpowiadam na podstawie informacji o Tadeax Studio i ogólnych wskazówek dotyczących tworzenia stron.`,
+sk:`Som <b>TadxAI</b>, pomocník zabudovaný do tohto webu. Odpovedám z informácií o Tadeax Studiu a všeobecných tipov na tvorbu webov.`}},
+thanks:{k:["thank","diky","dekuji","gracias","danke","dziekuje","dakujem","bye","goodbye","nashle","adios","tschuss"],a:{
+en:`You're welcome! Anything else I can help with?`,cs:`Rádo se stalo! Můžu ještě s něčím pomoct?`,es:`¡De nada! ¿Puedo ayudarte con algo más?`,de:`Gern geschehen! Kann ich dir sonst noch helfen?`,pl:`Proszę bardzo! Czy mogę jeszcze w czymś pomóc?`,sk:`Rado sa stalo! Môžem ešte s niečím pomôcť?`}}
+};
+const CH={
+chips:{en:["How to create a website","About Tadeax Studio","Services","Portfolio","Partners","Contact"],cs:["Jak vytvořit web","O Tadeax Studiu","Služby","Portfolio","Partneři","Kontakt"],es:["Cómo crear un sitio web","Sobre Tadeax Studio","Servicios","Portafolio","Socios","Contacto"],de:["Website erstellen","Über Tadeax Studio","Leistungen","Portfolio","Partner","Kontakt"],pl:["Jak stworzyć stronę","O Tadeax Studio","Usługi","Portfolio","Partnerzy","Kontakt"],sk:["Ako vytvoriť web","O Tadeax Štúdiu","Služby","Portfólio","Partneri","Kontakt"]},
+ids:["web","about","services","portfolio","partners","contact"],
+hint:{en:"Pick a topic below or type your question.",cs:"Vyber téma níže nebo napiš dotaz.",es:"Elige un tema abajo o escribe tu pregunta.",de:"Wähle unten ein Thema oder stelle deine Frage.",pl:"Wybierz temat poniżej lub wpisz pytanie.",sk:"Vyber tému nižšie alebo napíš otázku."},
+fb:{en:`I'm not sure about that yet. I can help with creating a website, about us, services, portfolio, partners and contact. For anything else, use the ${go("#contact","contact form")}.`,
+cs:`Tomu zatím nerozumím. Pomůžu s tvorbou webu, informacemi o nás, službami, portfoliem, partnery a kontaktem. Cokoliv jiného napiš přes ${go("#contact","kontaktní formulář")}.`,
+es:`Aún no estoy seguro de eso. Puedo ayudar con la creación de sitios web, sobre nosotros, servicios, portafolio, socios y contacto. Para otra cosa, usa el ${go("#contact","formulario de contacto")}.`,
+de:`Da bin ich mir noch nicht sicher. Ich helfe bei Website-Erstellung, Über uns, Leistungen, Portfolio, Partnern und Kontakt. Für alles andere nutze das ${go("#contact","Kontaktformular")}.`,
+pl:`Tego jeszcze nie wiem. Pomogę w tworzeniu stron, informacjami o nas, usługach, portfolio, partnerach i kontakcie. W innych sprawach użyj ${go("#contact","formularza kontaktowego")}.`,
+sk:`Tomu zatiaľ nerozumiem. Pomôžem s tvorbou webu, informáciami o nás, službami, portfóliom, partnermi a kontaktom. Čokoľvek iné napíš cez ${go("#contact","kontaktný formulár")}.`}};
 const aim=$("#aim"),aip=$("#aip");
 function msg(h,c,raw){const d=document.createElement("div");d.className="m "+c;raw?d.innerHTML=h:d.textContent=h;aim.appendChild(d);aim.scrollTop=aim.scrollHeight;return d}
-function norm(t){return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
-function reply(q){let best=null,sc=0;const n=norm(q);
-KB.forEach(e=>{let s=0;e.k.forEach(k=>{if(n.includes(norm(k)))s+=k.length>4?2:1});if(s>sc){sc=s;best=e}});
-return best?best.a:`I'm not sure about that yet. I can help with <b>creating a website</b>, <b>about us</b>, <b>services</b>, <b>portfolio</b>, <b>partners</b> and <b>contact</b>. For anything else, write to us via the ${L("#contact","contact form")}.`}
-function ask(q){if(!q.trim())return;msg(q,"u");const t=msg('<span class="dots"><span></span><span></span><span></span></span>',"b",true);
-setTimeout(()=>{t.innerHTML=reply(q);aim.scrollTop=aim.scrollHeight},500+Math.random()*400)}
-$("#aiq").innerHTML=SUG.map(x=>`<button type="button">${x}</button>`).join("");
-$("#aiq").onclick=e=>{if(e.target.tagName==="BUTTON")ask(e.target.textContent)};
+function norm(t){return " "+t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
+function topicFor(q){let best=null,sc=0;const n=norm(q);for(const id in KB){let s=0;KB[id].k.forEach(k=>{if(n.includes(norm(k).slice(1)))s+=k.length>4?2:1});if(s>sc){sc=s;best=id}}return best}
+const ans=id=>KB[id].a[lang]||KB[id].a.en;
+function ask(q,id){if(!q.trim())return;msg(q,"u");const t=msg('<span class="dots"><span></span><span></span><span></span></span>',"b",true);
+const topic=id||topicFor(q);setTimeout(()=>{t.innerHTML=topic?ans(topic):CH.fb[lang];aim.scrollTop=aim.scrollHeight},500+Math.random()*400)}
+function buildChips(){const q=$("#aiq");q.innerHTML="";CH.ids.forEach((id,i)=>{const b=document.createElement("button");b.type="button";b.textContent=CH.chips[lang][i];b.onclick=()=>ask(b.textContent,id);q.appendChild(b)})}
 $("#aif").onsubmit=e=>{e.preventDefault();const i=$("#ai");ask(i.value);i.value=""};
-aim.onclick=e=>{if(e.target.closest("[data-go]")){e.preventDefault();const h=e.target.closest("a").getAttribute("href");aip.classList.remove("show");document.querySelector(h).scrollIntoView({behavior:"smooth"})}};
+aim.onclick=e=>{const a=e.target.closest("[data-go]");if(a){e.preventDefault();aip.classList.remove("show");document.querySelector(a.getAttribute("href")).scrollIntoView({behavior:"smooth"})}};
 let greeted=false;
-function toggleAI(){aip.classList.toggle("show");if(aip.classList.contains("show")&&!greeted){greeted=true;msg(reply("hello"),"b",true);msg("Pick a topic below or type your question.","b")}}
+function greet(){greeted=true;msg(ans("greet"),"b",true);msg(CH.hint[lang],"b")}
+function toggleAI(){aip.classList.toggle("show");if(aip.classList.contains("show")&&!greeted)greet()}
 $("#aib").onclick=toggleAI;$("#aix").onclick=toggleAI;
+
+// ---------- i18n engine ----------
+function tr(k){if(lang==="en")return k;const v=T[k];return v&&v[IDX[lang]]!==undefined?v[IDX[lang]]:k}
+function walk(root){
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentElement;return p&&!p.closest("script,style,pre,#lgm,#aim,[data-h]")?1:2}});
+  let n;while(n=w.nextNode()){if(n._o===undefined)n._o=n.nodeValue;const t=n._o.trim();if(!t)continue;
+    n.nodeValue=n._o.match(/^\s*/)[0]+tr(t)+n._o.match(/\s*$/)[0]}
+}
+function setLang(l){
+  lang=l;try{localStorage.setItem("tl",l)}catch(e){}
+  document.documentElement.lang=l;$("#lsel").value=l;
+  walk(document.body);
+  document.querySelectorAll("[data-h]").forEach(e=>{e.innerHTML=H[e.dataset.h][HI[l]]});
+  document.querySelectorAll("[placeholder]").forEach(e=>{if(e._p===undefined)e._p=e.getAttribute("placeholder");e.setAttribute("placeholder",tr(e._p))});
+  ph=PHRASES[l];pi=0;ci=0;del=false;tw.textContent="";
+  aim.innerHTML="";buildChips();greeted=false;if(aip.classList.contains("show"))greet();
+  if($("#lgm").classList.contains("show"))openLg(curLg);
+  lucide.createIcons();
+}
+$("#lsel").onchange=e=>setLang(e.target.value);
 lucide.createIcons();
+setLang(lang);
+
 </script>
 </body>
 </html>
